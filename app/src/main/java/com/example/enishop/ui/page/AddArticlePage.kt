@@ -1,6 +1,7 @@
 package com.example.enishop.ui.page
 
 import android.widget.Space
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,7 +30,7 @@ fun AddArticlePage(modifier: Modifier = Modifier) {
     var title by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
     var price by remember { mutableStateOf("") }
-    Column(modifier) {
+    Column(modifier,verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Spacer(Modifier.padding(top=16.dp))
         TextField(
             title,
