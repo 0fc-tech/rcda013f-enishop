@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.enishop.ui.page.AddArticlePage
+import com.example.enishop.ui.page.articles_list.ArticlesListScreen
 import com.example.enishop.ui.theme.EniShopTheme
 import com.example.enishop.ui.theme.Typography
 import java.time.LocalDateTime
@@ -47,7 +48,7 @@ val articles = listOf(
     ),
     Article(
         id = 2,
-        name = "Mens Casual Premium Slim Fit T-Shirts",
+        name = "Mens Casual",
         description = "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
         price = 22.3f,
         urlImage = "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
@@ -80,7 +81,8 @@ class MainActivity : ComponentActivity() {
                         }
                     )
                 },) { innerPadding ->
-                    AddArticlePage(Modifier.padding(innerPadding))
+                    ArticlesListScreen(Modifier.padding(innerPadding))
+                //AddArticlePage(Modifier.padding(innerPadding))
                 }
             }
         }
