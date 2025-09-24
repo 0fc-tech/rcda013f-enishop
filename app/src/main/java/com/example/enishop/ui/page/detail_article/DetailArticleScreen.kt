@@ -1,5 +1,8 @@
 package com.example.enishop.ui.page.detail_article
 
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.example.enishop.Article
@@ -28,10 +32,17 @@ fun DetailProduit(modifier: Modifier = Modifier) {
         urlImage = "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png",
         category = "men's clothing", date = Date()
     )
+    val context = LocalContext.current
     Column(modifier
         .padding(16.dp)) {
         Text(article.name,
-            style = Typography.headlineMedium)
+            style = Typography.headlineMedium,
+            modifier=Modifier.clickable {
+                Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://google.com/search?q=${article.name}")).also {
+                        context.startActivity(it)
+                }
+            })
         AsyncImage(
             modifier = Modifier
                 .fillMaxWidth()
