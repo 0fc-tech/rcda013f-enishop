@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.StateFlow
 import java.util.Date
 
 class ArticlesListVM : ViewModel(){
-
     private val articlesInit = listOf(
         Article(
             id = 1,
@@ -43,7 +42,7 @@ class ArticlesListVM : ViewModel(){
         if(category == ""){
             _articles.value = articlesInit
         }else{
-            _articles.value = _articles.value.filter { category == it.category }
+            _articles.value = articlesInit.filter { category == it.category }
         }
     }
 }

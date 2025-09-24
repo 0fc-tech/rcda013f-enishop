@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.enishop.ui.page.AddArticlePage
 import com.example.enishop.ui.page.articles_list.ArticlesListScreen
+import com.example.enishop.ui.page.detail_article.DetailProduit
 import com.example.enishop.ui.theme.EniShopTheme
 import com.example.enishop.ui.theme.Typography
 import java.time.LocalDateTime
@@ -53,46 +54,11 @@ class MainActivity : ComponentActivity() {
                         }
                     )
                 },) { innerPadding ->
-                    ArticlesListScreen(Modifier.padding(innerPadding))
+                   // ArticlesListScreen(Modifier.padding(innerPadding))
+                    DetailProduit(Modifier.padding(innerPadding))
                 //AddArticlePage(Modifier.padding(innerPadding))
                 }
             }
         }
     }
-
-}
-
-@Composable
-fun DetailProduit(modifier: Modifier = Modifier) {
-    //var isFavorite = false;
-//
-    //Column(modifier
-    //    .padding(16.dp)) {
-    //    Text(articles[0].name,
-    //        style = Typography.headlineMedium)
-    //    AsyncImage(
-    //        modifier = Modifier
-    //            .fillMaxWidth()
-    //            .height(250.dp),
-    //        model=articles[0].urlImage,
-    //        contentDescription = articles[0].name)
-    //    Text(articles[0].description)
-    //    Row(modifier = Modifier.fillMaxWidth(),
-    //        horizontalArrangement = Arrangement.SpaceBetween) {
-    //        Text("Prix: ${articles[0].price}€")
-    //        Text("Date de sortie : ${articles[0].date.date}/${articles[0].date.month+1}")
-    //    }
-    //    Row(
-    //        modifier = Modifier.fillMaxWidth(),
-    //        verticalAlignment = Alignment.CenterVertically,
-    //        horizontalArrangement = Arrangement.Center) {
-    //        Checkbox(
-    //            isFavorite,
-    //            onCheckedChange = { checked -> isFavorite = checked },
-    //        )
-    //        Text("Favoris?  ")
-    //    }
-//
-//
-    //}
 }
