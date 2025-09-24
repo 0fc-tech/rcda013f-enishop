@@ -24,7 +24,7 @@ import com.example.enishop.ui.theme.Typography
 
 @Composable
 fun ItemArticle(modifier: Modifier = Modifier, article: Article) {
-    OutlinedCard(Modifier.padding(8.dp),) {
+    OutlinedCard(modifier.padding(8.dp),) {
         Column(
             modifier= Modifier.fillMaxWidth().padding(8.dp)) {
             Box(Modifier.align(Alignment.CenterHorizontally)

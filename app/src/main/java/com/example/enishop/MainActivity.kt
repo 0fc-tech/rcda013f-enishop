@@ -29,10 +29,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NamedNavArgument
+import androidx.navigation.NavArgument
+import androidx.navigation.NavArgumentBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import coil3.compose.AsyncImage
 import com.example.enishop.ui.page.AddArticlePage
 import com.example.enishop.ui.page.articles_list.ArticlesListScreen
-import com.example.enishop.ui.page.detail_article.DetailProduit
+import com.example.enishop.ui.page.detail_article.DetailArticleScreen
 import com.example.enishop.ui.theme.EniShopTheme
 import com.example.enishop.ui.theme.Typography
 import java.time.LocalDateTime
@@ -54,11 +63,41 @@ class MainActivity : ComponentActivity() {
                         }
                     )
                 },) { innerPadding ->
-                   // ArticlesListScreen(Modifier.padding(innerPadding))
-                    DetailProduit(Modifier.padding(innerPadding))
-                //AddArticlePage(Modifier.padding(innerPadding))
+                    NavigationShop(Modifier.padding(innerPadding))
                 }
             }
         }
     }
 }
+
+@Composable
+fun NavigationShop(
+    modifier: Modifier = Modifier,
+    navController : NavHostController = rememberNavController()) {
+    NavHost(
+        navController = navController,
+        startDestination = "list",
+        modifier = modifier
+    ){
+        composable("list") {
+            ArticlesListScreen(onClickArticle = {navController.navigate("detail/${it.id}")})
+        }
+        composable("detail/{idArticle}",
+            listOf(
+                navArgument(
+                    "idArticle"
+                ) {
+                    NavArgumentBuilder()
+                        .also { it.type = NavType.StringType }
+                        .build()
+                }
+            )
+        ){entry->
+            DetailArticleScreen(entry.arguments?.getString("idArticle")?.toIntOrNull() ?: -1 )
+        }
+        composable("add"){
+            AddArticlePage()
+        }
+    }
+}
+

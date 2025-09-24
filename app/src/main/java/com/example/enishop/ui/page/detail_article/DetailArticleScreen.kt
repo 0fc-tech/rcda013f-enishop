@@ -22,7 +22,7 @@ import com.example.enishop.ui.theme.Typography
 import java.util.Date
 
 @Composable
-fun DetailProduit(modifier: Modifier = Modifier) {
+fun DetailArticleScreen(idArticle : Int,modifier: Modifier = Modifier) {
     var isFavorite = false;
     val article =  Article(
         id = 3,
@@ -35,7 +35,7 @@ fun DetailProduit(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     Column(modifier
         .padding(16.dp)) {
-        Text(article.name,
+        Text("${idArticle}${article.name}",
             style = Typography.headlineMedium,
             modifier=Modifier.clickable {
                 Intent(Intent.ACTION_VIEW,

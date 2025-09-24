@@ -17,12 +17,13 @@ import com.example.enishop.vm.ArticlesListVM
 
 @Composable
 fun ArticlesListScreen(modifier: Modifier = Modifier.Companion,
+                       onClickArticle : (article : Article )->Unit,
                        vm: ArticlesListVM = viewModel()) {
     val articles by vm.articles.collectAsState()
     Column(modifier) {
         CategoryFilters(onCategorySelected = {
             vm.filterArticles(it)
         })
-        GridArticles(articles =articles)
+        GridArticles(articles =articles, onClickArticle = onClickArticle)
     }
 }
