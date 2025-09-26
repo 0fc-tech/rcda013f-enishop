@@ -86,14 +86,14 @@ fun NavigationShop(
             listOf(
                 navArgument(
                     "idArticle"
-                ) {
-                    NavArgumentBuilder()
-                        .also { it.type = NavType.StringType }
-                        .build()
-                }
+                ) { type = NavType.StringType }
             )
         ){entry->
-            DetailArticleScreen(entry.arguments?.getString("idArticle")?.toIntOrNull() ?: -1 )
+            val idArticle = entry.arguments?.getString("idArticle")?.toIntOrNull()
+            if(idArticle != null)
+                DetailArticleScreen( idArticle )
+            else
+                Text("Erreur")
         }
         composable("add"){
             AddArticlePage()

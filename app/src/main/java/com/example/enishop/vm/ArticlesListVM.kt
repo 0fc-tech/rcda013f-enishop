@@ -38,6 +38,10 @@ class ArticlesListVM : ViewModel(){
     private val _articles = MutableStateFlow<List<Article>>(articlesInit)
     val articles : StateFlow<List<Article>> = _articles
 
+    fun getById(idArticle :Int) : Article?{
+        return articlesInit.find { it.id == idArticle }
+    }
+
     fun filterArticles(category :String){
         if(category == ""){
             _articles.value = articlesInit
